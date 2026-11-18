@@ -1,0 +1,508 @@
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Полина Бойченко · Ведущий финансовый контролёр</title>
+<style>
+    :root {
+        --bg: #0a0f1f;
+        --bg-card: #121a35;
+        --bg-card-hover: #1a2450;
+        --text: #e8ebf7;
+        --text-muted: #9aa3c2;
+        --accent-1: #7c5cff;
+        --accent-2: #22d3ee;
+        --accent-3: #f472b6;
+        --accent-4: #34d399;
+        --border: rgba(124, 92, 255, 0.18);
+        --radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 40px 20px;
+        background-image:
+            radial-gradient(circle at 15% 20%, rgba(124, 92, 255, 0.18), transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(34, 211, 238, 0.12), transparent 45%),
+            radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.06), transparent 60%);
+        background-attachment: fixed;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+        text-align: center;
+        padding: 40px 20px 55px;
+        position: relative;
+        animation: fadeUp 0.7s ease-out both;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+        opacity: 0.6;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: 100px;
+        background: rgba(124, 92, 255, 0.12);
+        border: 1px solid var(--border);
+        color: var(--accent-2);
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 10px var(--accent-2);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 5.5vw, 3.8rem);
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        background: linear-gradient(120deg, #ffffff 10%, var(--accent-1) 45%, var(--accent-2) 75%, var(--accent-3) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        filter: drop-shadow(0 4px 24px rgba(124, 92, 255, 0.25));
+    }
+
+    .hero h1 .name {
+        display: block;
+        font-size: 0.85em;
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: clamp(0.98rem, 2vw, 1.12rem);
+        color: var(--text-muted);
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .hero p strong {
+        color: var(--accent-2);
+        font-weight: 600;
+    }
+
+    /* ================= SECTION ================= */
+    .section {
+        margin-bottom: 56px;
+        animation: fadeUp 0.7s ease-out both;
+    }
+
+    .section:nth-of-type(2) { animation-delay: 0.1s; }
+    .section:nth-of-type(3) { animation-delay: 0.2s; }
+    .section:nth-of-type(4) { animation-delay: 0.3s; }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+        font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: #fff;
+    }
+
+    .section-title::before {
+        content: '';
+        flex-shrink: 0;
+        width: 5px;
+        height: 28px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+        box-shadow: 0 0 16px rgba(124, 92, 255, 0.5);
+    }
+
+    /* ================= CARDS ================= */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        position: relative;
+        padding: 26px 24px;
+        background: linear-gradient(160deg, var(--bg-card), #0e1430);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.3, 1),
+                    background 0.4s ease,
+                    border-color 0.4s ease,
+                    box-shadow 0.4s ease;
+        overflow: hidden;
+        cursor: default;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: var(--radius);
+        padding: 1px;
+        background: linear-gradient(135deg, transparent, transparent);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        transition: background 0.4s;
+        pointer-events: none;
+    }
+
+    .card::after {
+        content: '';
+        position: absolute;
+        top: -60%;
+        right: -40%;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(124, 92, 255, 0.3), transparent 70%);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        background: linear-gradient(160deg, var(--bg-card-hover), #141c3e);
+        border-color: rgba(124, 92, 255, 0.4);
+        box-shadow: 0 20px 40px -20px rgba(124, 92, 255, 0.55),
+                    0 0 0 1px rgba(124, 92, 255, 0.15);
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    .card:hover::before {
+        background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    }
+
+    .card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        font-size: 20px;
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.22), rgba(34, 211, 238, 0.15));
+        border: 1px solid rgba(124, 92, 255, 0.28);
+        color: var(--accent-2);
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.3, 1);
+    }
+
+    .card:hover .card-icon {
+        transform: scale(1.1) rotate(-6deg);
+    }
+
+    .card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: -0.3px;
+        line-height: 1.35;
+    }
+
+    .card p {
+        font-size: 0.94rem;
+        color: var(--text-muted);
+        line-height: 1.65;
+    }
+
+    .card p .highlight {
+        color: var(--accent-2);
+        font-weight: 600;
+    }
+
+    /* ================= CASE BLOCKS ================= */
+    .case {
+        position: relative;
+        padding: 26px 30px 26px 34px;
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.09), rgba(34, 211, 238, 0.04));
+        border-left: 4px solid transparent;
+        border-image: linear-gradient(180deg, var(--accent-1), var(--accent-2)) 1;
+        border-radius: 4px 16px 16px 4px;
+        margin-bottom: 18px;
+        transition: background 0.35s ease, transform 0.35s ease;
+        overflow: hidden;
+    }
+
+    .case:last-child { margin-bottom: 0; }
+
+    .case::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.16), transparent 70%);
+        pointer-events: none;
+    }
+
+    .case:hover {
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.16), rgba(34, 211, 238, 0.08));
+        transform: translateX(4px);
+    }
+
+    .case-label {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: var(--accent-2);
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .case h4 {
+        font-size: 1.08rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: -0.3px;
+        line-height: 1.4;
+    }
+
+    .case p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.65;
+    }
+
+    .case p strong {
+        color: var(--accent-3);
+        font-weight: 700;
+    }
+
+    /* ================= TAGS ================= */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .tag {
+        padding: 10px 20px;
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        transition: transform 0.3s ease,
+                    background 0.3s ease,
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease,
+                    color 0.3s ease;
+        cursor: default;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .tag::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 8px var(--accent-2);
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .tag:hover {
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.28), rgba(34, 211, 238, 0.18));
+        border-color: var(--accent-1);
+        color: #fff;
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 10px 22px -10px rgba(124, 92, 255, 0.7);
+    }
+
+    .tag:hover::before {
+        background: var(--accent-3);
+        box-shadow: 0 0 10px var(--accent-3);
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+        text-align: center;
+        padding: 40px 0 20px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border);
+        margin-top: 40px;
+    }
+
+    .footer span {
+        background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+    }
+
+    /* ================= ANIMATIONS ================= */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 640px) {
+        body { padding: 24px 14px; }
+        .hero { padding: 24px 8px 36px; }
+        .hero h1 { letter-spacing: -1px; }
+        .hero h1 .name { font-size: 0.9em; }
+        .section { margin-bottom: 40px; }
+        .cards { grid-template-columns: 1fr; gap: 16px; }
+        .card { padding: 22px 20px; }
+        .case { padding: 22px 20px 22px 24px; }
+        .case:hover { transform: none; }
+        .tag { padding: 8px 16px; font-size: 0.85rem; }
+        .section-title::before { height: 24px; width: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-badge">Finance · Controlling</div>
+        <h1>
+            <span class="name">Полина Бойченко</span>
+            Ведущий финансовый контролёр
+        </h1>
+        <p><strong>4 года</strong> в финансах компании-дистрибьютора техники и электроники</p>
+    </header>
+
+    <!-- ПРИБЫЛЬНОСТЬ -->
+    <section class="section">
+        <h2 class="section-title">Прибыльность и финансовое планирование</h2>
+
+        <div class="cards">
+            <article class="card">
+                <div class="card-icon">📊</div>
+                <h3>План-факт анализ маржи</h3>
+                <p>Ежемесячно провожу <span class="highlight">план-факт анализ маржи</span> по направлениям бизнеса. Выясняю причины отклонений совместно с продакт-менеджерами и руководителями.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">📈</div>
+                <h3>Квартальный P&amp;L</h3>
+                <p>Формирую <span class="highlight">квартальный P&amp;L</span> по центрам прибыли. Анализирую финансовый результат по направлениям бизнеса, рассчитываю EBITDA, ROIC, EBT.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Бюджетирование</h3>
+                <p>Участвую в <span class="highlight">бюджетировании</span> и финансовом прогнозировании компании.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- АВТОМАТИЗАЦИЯ -->
+    <section class="section">
+        <h2 class="section-title">Внедрение и автоматизация</h2>
+
+        <div class="case">
+            <span class="case-label">Кейс · 1С</span>
+            <h4>Внедрение управленческих отчётов в 1С</h4>
+            <p>Отвечала за внедрение управленческих отчётов в <strong>1С</strong>. Подготовила техническое задание, согласовала с разработчиками логику расчётов и проверила результаты.</p>
+        </div>
+
+        <div class="case">
+            <span class="case-label">Кейс · Оптимизация</span>
+            <h4>Ускорение финансовых задач в 3–4 раза</h4>
+            <p>Сократила время выполнения нескольких финансовых задач <strong>в 3–4 раза</strong> за счёт переработки алгоритмов расчёта.</p>
+        </div>
+
+        <div class="case">
+            <span class="case-label">Кейс · Методология</span>
+            <h4>Методика расчёта финансового цикла</h4>
+            <p>Разработала и внедрила методику расчёта финансового цикла по контрагенту, работающему по <strong>агентской схеме</strong>.</p>
+        </div>
+    </section>
+
+    <!-- ИНСТРУМЕНТЫ -->
+    <section class="section">
+        <h2 class="section-title">Инструменты и навыки</h2>
+        <div class="tags">
+            <span class="tag">1С</span>
+            <span class="tag">Excel</span>
+            <span class="tag">P&amp;L</span>
+            <span class="tag">EBITDA</span>
+            <span class="tag">ROIC</span>
+            <span class="tag">EBT</span>
+            <span class="tag">План-факт анализ</span>
+            <span class="tag">Бюджетирование</span>
+            <span class="tag">Финансовое прогнозирование</span>
+            <span class="tag">Управленческая отчётность</span>
+            <span class="tag">Финансовый цикл</span>
+            <span class="tag">Автоматизация</span>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span>Полина Бойченко</span> · Финансовый контроллинг · 2026
+    </footer>
+
+</div>
+</body>
+</html>
